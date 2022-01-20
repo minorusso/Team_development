@@ -216,6 +216,7 @@ ja:
       cannot_delete_only_a_member: 'このユーザーはこのチームにしか所属していないため、削除できません。'
       delete_member: 'メンバーを削除しました。'
       cannot_delete_member_4_some_reason: 'なんらかの原因で、削除できませんでした。'
+      cannot_delete_leader_or_yourself: '権限がないため自分以外のユーザーは削除できません'
       failed_to_post: '投稿できませんでした...'
       create_team: 'チーム作成に成功しました！'
       failed_to_save_team: '保存に失敗しました、、'
@@ -253,6 +254,7 @@ ja:
       edit_profile: 'プロフィールを編集'
       team_you_belong_to: '所属しているチーム'
       posted_articles: '投稿した記事一覧'
+      owner_authority: 'リーダー以外は編集できません'
     button:
       submit: '投稿'
       edit: '編集'
