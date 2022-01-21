@@ -41,9 +41,8 @@ class TeamsController < ApplicationController
       render :edit
     end
   end
-  # チームに所属するUserの削除は本人とオーナーのみ可能
-  def destroy
-    
+
+  def destroy    
     @team.destroy
     redirect_to teams_url, notice: I18n.t('views.messages.delete_team')
   end
