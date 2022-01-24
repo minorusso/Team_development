@@ -259,6 +259,8 @@ ja:
       team_you_belong_to: '所属しているチーム'
       posted_articles: '投稿した記事一覧'
       owner_authority: 'リーダー以外は編集できません'
+      delete_agenda: 'アジェンダが削除されました'
+      delete_agenda_info: 'チームのアジェンダが削除されました'
     button:
       submit: '投稿'
       edit: '編集'
