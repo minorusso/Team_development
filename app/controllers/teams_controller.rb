@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_team, only: %i[show edit update destroy]
+  before_action :set_team, only: %i[show edit update destroy assignment_of_authority] 
   before_action :if_not_owner, only: %i[edit]
 
   def index
@@ -50,6 +50,16 @@ class TeamsController < ApplicationController
   def dashboard
     @team = current_user.keep_team_id ? Team.find(current_user.keep_team_id) : current_user.teams.first
   end
+
+  def assignment_of_authority
+    if @team.update(owner_id: params[:user_id])
+      AssignMailer.assignment_of_authority_mail(@team.owner.email).deliver
+      redirect_to @team, notice: I18n.t('views.messages.assignment_of_authority')
+    else
+      redirect_to team_url, notice: I18n.t('views.messages.assignment_of_authority_4_some_reson')
+    end
+  end
+
 
   private
 
