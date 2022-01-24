@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   resource :user
   
   resources :teams do
-    resources :assigns, only: %w(create destroy)
+    member do 
+      patch 'assignment_of_authority'
+    end
+    resources :assigns, only: %w(create destroy update)
     resources :agendas, shallow: true do
       resources :articles do
         resources :comments
