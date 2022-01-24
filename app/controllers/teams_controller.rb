@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_team, only: %i[show edit update destroy assignment_of_authority] 
+  before_action :set_team, only: %i[show edit update destroy assignment_of_authority]
   before_action :if_not_owner, only: %i[edit]
 
   def index
@@ -21,8 +21,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(team_params)  
-      # @team.ownerにcurrent_userをセット
+    @team = Team.new(team_params)
+    # @team.ownerにcurrent_userをセット
     @team.owner = current_user
     if @team.save
       @team.invite_member(@team.owner)
@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  def destroy    
+  def destroy
     @team.destroy
     redirect_to teams_url, notice: I18n.t('views.messages.delete_team')
   end
@@ -59,7 +59,6 @@ class TeamsController < ApplicationController
       redirect_to team_url, notice: I18n.t('views.messages.assignment_of_authority_4_some_reson')
     end
   end
-
 
   private
 
