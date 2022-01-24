@@ -33,6 +33,8 @@ gem 'devise'
 
 gem 'rexml'
 
+gem 'rubocop', require: false
+
 group :development, :test do
   gem 'awesome_print'
   gem 'bullet'
