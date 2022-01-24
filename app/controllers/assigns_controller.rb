@@ -27,10 +27,15 @@ class AssignsController < ApplicationController
   end
 
   def assign_destroy(assign, assigned_user)
+    # ユーザーがオーナーだった場合
     if assigned_user == assign.team.owner
       I18n.t('views.messages.cannot_delete_the_leader')
+    # ユーザーが一人の時
     elsif Assign.where(user_id: assigned_user.id).count == 1
       I18n.t('views.messages.cannot_delete_only_a_member')
+    # Userの削除（離脱）は、そのTeamのオーナーか、そのUser自身しかできない
+    elsif ( current_user.id != assign.team.owner.id ) && ( current_user.id != assigned_user.id )
+      I18n.t('views.messages.cannot_delete_leader_or_yourself')
     elsif assign.destroy
       set_next_team(assign, assigned_user)
       I18n.t('views.messages.delete_member')
